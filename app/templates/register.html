@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'images/back.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bg-body-tertiary {
+            --bs-bg-opacity: 1;
+            background-color: #f0f0f0 !important;
+        }
+        .form-signup {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .br-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-floating input {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-floating label {
+            color: #666;
+        }
+        .btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <main class="form-signup w-100 m-auto">
+        <form class="br-container" method="post">
+            {% csrf_token %}
+            <h1 class="text-center h4 mb-4 fw-normal">Создание аккаунта</h1>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="first_name" id="name" placeholder="Имя" required>
+                <label for="name">Имя</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="last_name" id="surname" placeholder="Фамилия" required>
+                <label for="surname">Фамилия</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Почта" required>
+                <label for="email">Почта</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Пароль" required>
+                <label for="password">Пароль</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="Подтвердите пароль"
+                       required>
+                <label for="password2">Подтверждение пароля</label>
+            </div>
+            <button class="btn w-100 py-2" type="submit">Зарегистрироваться</button>
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

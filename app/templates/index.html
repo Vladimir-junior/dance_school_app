@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>2Steps</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9">
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+        .b-example-divider {
+          width: 100%;
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
+        }
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
+        }
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+        .btn-bd-primary {
+          --bd-violet-bg: #712cf9;
+          --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+          --bs-btn-font-weight: 600;
+          --bs-btn-color: var(--bs-white);
+          --bs-btn-bg: var(--bd-violet-bg);
+          --bs-btn-border-color: var(--bd-violet-bg);
+          --bs-btn-hover-color: var(--bs-white);
+          --bs-btn-hover-bg: #6528e0;
+          --bs-btn-hover-border-color: #6528e0;
+          --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+          --bs-btn-active-color: var(--bs-btn-hover-color);
+          --bs-btn-active-bg: #5a23c8;
+          --bs-btn-active-border-color: #5a23c8;
+        }
+        .bd-mode-toggle {
+          z-index: 1500;
+        }
+        .bd-mode-toggle .dropdown-menu .active .bi {
+          display: block !important;
+        }
+        .card-cover{
+          height: 270px;
+          border: 1px solid white;
+        }
+        .custom-border-top {
+          border-top-color: black !important;
+        }
+        .custom-border-bottom {
+          border-bottom-color: black !important;
+        }
+       .blurred-bg {
+          background-image: url("static/images/back.jpg");
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          position: relative;
+          background-color: #f8f9fa;
+       }
+        .content {
+            z-index: 1;
+            position: relative;
+            padding: 20px;
+        }
+        html::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #212529;
+            z-index: -1;
+            }
+           #stili {
+
+              padding: 60px 0;
+          }
+          .card {
+              border: none;
+              border-radius: 15px;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              overflow: hidden;
+          }
+          .card:hover {
+              transform: translateY(-10px);
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          }
+          .card-img-top {
+              height: 100px;
+              object-fit: cover;
+              border-radius: 15px 15px 0 0;
+          }
+          .card-text {
+              font-size: 1rem;
+              color: #555;
+          }
+          .card-body {
+              padding: 20px;
+          }
+          .card-title {
+              font-size: 1.25rem;
+              font-weight: 600;
+              color: #333;
+          }
+        p{
+            color: white;
+          }
+        .custom-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+        }
+        .custom-card-header {
+            background-color: #CCF741;
+            color: black;
+            font-weight: bold;
+            padding: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .card-body {
+            color: black;
+        }
+        .custom-card-body {
+            background-color: #CCF741;
+            color: black;
+        }
+        .card-body h4 {
+            color: black;
+        }
+        .card-body p {
+            color: black;
+        }
+        .der  {
+            background-color: #CCF741;
+            color: black;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+    <link href="pricing.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand d-md-none" href="#">
+            <svg class="bi" width="24" height="24">
+                <use xlink:href="#aperture"></use>
+            </svg>
+            Aperture
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+                aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                             class="bi bi-2-square" viewBox="0 0 16 16" style="color:#CCF741;">
+                            <path d="M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306"/>
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                        </svg>
+                        <span class="fs-2" style="color:#CCF741">steps</span>
+                    </a>
+                    <li class="nav-item"><a class="nav-link" href="#featured-o-nas">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pedagogi">Педагоги</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stili">Стили</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#custom-cards-zali">Наши залы</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#history">История</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'post_list' %}">Блог</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Вход</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="blurred-bg"></div>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check" viewBox="0 0 16 16">
+        <title>Check</title>
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+</svg>
+<div class="container py-3">
+    <main>
+        <div class="container px-4 py-5" id="featured-o-nas">
+            <h2 class="pb-2 text-center" style="color:#CCF741;">О нас</h2>
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-star-fill" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">Первый танцевальный центр в Минске</h3>
+                    <p style="font-size: 18px;">В 2steps царит дружеская и позитивная атмосфера, где каждый может
+                        почувствовать себя частью
+                        большой танцевальной семьи. Вас ждут профессиональное обучение танцам, новые знакомства и
+                        общение, веселое времяпрепровождение.</p>
+                </div>
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-door-open-fill" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">6 комфортных залов в одном месте</h3>
+                    <p style="font-size: 18px;">Обучение проходит в комфортабельных залах, расположенных на одном этаже,
+                        оборудованных всем
+                        необходимым для любых видов тренировок. Помимо залов в Студии создана особая chill-зона для
+                        отдыха наших учеников.</p>
+                </div>
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-person-walking" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M6.44 3.752A.75.75 0 0 1 7 3.5h1.445c.742 0 1.32.643 1.243 1.38l-.43 4.083a1.8 1.8 0 0 1-.088.395l-.318.906.213.242a.8.8 0 0 1 .114.175l2 4.25a.75.75 0 1 1-1.357.638l-1.956-4.154-1.68-1.921A.75.75 0 0 1 6 8.96l.138-2.613-.435.489-.464 2.786a.75.75 0 1 1-1.48-.246l.5-3a.75.75 0 0 1 .18-.375l2-2.25Z"/>
+                            <path d="M6.25 11.745v-1.418l1.204 1.375.261.524a.8.8 0 0 1-.12.231l-2.5 3.25a.75.75 0 1 1-1.19-.914zm4.22-4.215-.494-.494.205-1.843.006-.067 1.124 1.124h1.44a.75.75 0 0 1 0 1.5H11a.75.75 0 0 1-.531-.22Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">Удобное расположение в центре города</h3>
+                    <p style="font-size: 18px;">Танцевальный Центр находится в шаговой доступности от ст.метро
+                        Первомайская, с бесплатной
+                        парковкой и вблизи парковой зоны.</p>
+                </div>
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-people-fill" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">Более 15 профессиональных педагогов</h3>
+                    <p style="font-size: 18px;">Педагогический состав центра представлен настоящими профессионалами
+                        своего дела: многолетний
+                        преподавательский стаж, сотни посещенных мастер-классов и кемпов за рубежом, судейство на
+                        престижных чемпионатах страны и ближнего зарубежья.</p>
+                </div>
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-x-diamond-fill" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098z"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">Самые современные танцевальные направления</h3>
+                    <p style="font-size: 18px;">Обучение более, чем 10 самым популярным стилям и направлениям:
+                        Jazz-Funk, High Heels, Girly
+                        Choreo, Vogue, Dancehall, Hip-Hop, Contemporary, K-Pop, Twerk, Детские Группы от 5 лет.</p>
+                </div>
+                <div class="feature col">
+                    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                             class="bi bi-card-list" viewBox="0 0 16 16" style="color: white;">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                            <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="fs-4 text-body-emphasis der">Большое количество мастер-классов и мероприятий</h3>
+                    <p style="font-size: 18px;">В Танцевальном Центре еженедельно проходит большое количество
+                        мастер-классов и других меропряитий
+                        с профессиональной съёмкой</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="container" id="pedagogi">
+            <h3 class="pb-4 text-center" style="color:#CCF741;">Педагоги</h3>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="static/images/pd1.jpg" alt="Педагог 1" class="img-fluid"
+                             style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="card-body custom-card-body">
+                            <h4 class="fw-normal">Вика Gallaktion</h4>
+                            <p>Эксперт по коммерческим танцам и джаз-фанку, Вика помогает развить технику и артистизм,
+                                заряжая учеников энергией на каждом занятии.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="static/images/pd2.jpg" alt="Педагог 2" class="img-fluid"
+                             style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="card-body custom-card-body">
+                            <h4 class="fw-normal">Илья Кецбая</h4>
+                            <p>Профессиональный педагог по хип-хопу и street dance, обучающий технике и стилю, помогая
+                                танцорам раскрывать свою индивидуальность.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="static/images/pd5.jpg" alt="Педагог 3" class="img-fluid"
+                             style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="card-body custom-card-body">
+                            <h4 class="fw-normal">Карина KNOOKID</h4>
+                            <p>Специалист по афро-танцам, Карина учит свободному выражению эмоций через движение и
+                                помогает ученикам развивать ритмичность.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="static/images/pd4.jpg" alt="Педагог 4" class="img-fluid"
+                             style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="card-body custom-card-body">
+                            <h4 class="fw-normal">Дима Богаченко</h4>
+                            <p>Мастер dancehall, Дима преподаёт технику и культуру этого стиля, делая акцент на динамике
+                                и ритме.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5" id="stili">
+            <h3 class="pb-4 text-center" style="color:#CCF741;">Стили</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            Jazz-funk
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Это стиль, сочетающий элементы джаза и хип-хопа. Он отличается энергичными движениями,
+                                сильной пластикой и резкими акцентами. Jazz-funk часто используется в коммерческих
+                                танцах и выступлениях артистов.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            High Heels
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Танец на высоких каблуках, который сочетает женственность и уверенность. Включает
+                                элементы вогга, джаз-фанка и стрип-пластики. Это чувственный и грациозный стиль,
+                                ориентированный на сексуальность и силу.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            Dancehall
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Родом из Ямайки, этот стиль включает энергичные и динамичные движения, часто
+                                сопровождаемые мощной музыкальной базой. Танец построен на ритме и представляет собой
+                                смесь африканских и карибских движений.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            AFRO
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Африканские танцы включают множество традиционных и современных стилей. Они
+                                характеризуются интенсивными движениями тела, работой с ритмом и выражением эмоций. Afro
+                                — это свободный стиль, в котором особое внимание уделяется физической активности.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            Twerk
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Танцевальный стиль, в основе которого лежат ритмичные и акцентированные движения бедер и
+                                ягодиц. Twerk приобрел мировую популярность благодаря чувственности и выразительности
+                                движений, часто сопровождаемых энергичной, басовой музыкой.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-header custom-card-header text-center">
+                            K-pop
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Танцевальный стиль, тесно связанный с южнокорейской поп-музыкой. Включает смесь
+                                хип-хопа, джаз-фанка и других стилей, известен своей синхронизацией, энергичными и
+                                четкими движениями, часто сопровождаемыми сложными хореографическими постановками.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container px-4 py-5" id="custom-cards-zali">
+            <h3 class="pb-2 text-center" style="color:#CCF741">Наши залы</h3>
+
+            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                <div class="col">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                         style="background-image: url('static/images/img1.jpg'); background-size: cover; background-position: center;">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="d-flex align-items-center me-3" style="color: black;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                    </svg>
+                                    <small>пр. Победителей 27</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                         style="background-image: url('static/images/img2.jpg'); background-size: cover; background-position: center;">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="d-flex align-items-center me-3" style="color: black;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                    </svg>
+                                    <small>ул. Панфилова 2</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-cover h-200 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                         style="background-image: url('static/images/img3.jpg'); background-size: cover; background-position: center;">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="d-flex align-items-center me-3" style="color: black;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                    </svg>
+                                    <small>пр. Дзержинского 9</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center" id="history">
+            <h3 class="pb-2 text-center" style="color:#CCF741">История школы</h3>
+            <p class="fs-5 ">Танцевальная школа "2Steps" в Минске была основана в 2015 году двумя
+                друзьями, увлеченными танцами и музыкой. С самого начала их цель была проста: создать место, где каждый,
+                независимо от возраста и уровня подготовки, сможет найти свой танцевальный стиль и получить удовольствие
+                от движения.
+
+                Начав с небольших групп по хип-хопу и современной хореографии, школа быстро завоевала популярность
+                благодаря теплой атмосфере и высокому профессионализму преподавателей. Со временем "2Steps" расширила
+                свои направления, добавив такие стили, как латина, брейк-данс и контемпорари.
+
+                Сегодня "2Steps" – это не просто школа танцев, но и активное сообщество, организующее мастер-классы,
+                выступления и мероприятия. Здесь каждый может сделать свои первые шаги в танце и превратить их в большие
+                победы.</p>
+        </div>
+    </main>
+</div>
+<footer class="bg-dark text-light pt-4 my-md-5 pt-md-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                     class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                    <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707z"/>
+                    <path d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018"/>
+                </svg>
+                <small class="d-block mb-3">&copy; 2017–2024</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5 style="color:#CCF741;">Наши соцсети:</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-telegram" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                        </svg>
+                        @2steps_tg</a></li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-youtube" viewBox="0 0 16 16">
+                            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+                        </svg>
+                        Школа танцев 2Steps</a>
+                    </li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                        </svg>
+                        2Steps_minsk</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5 style="color:#CCF741;">Наши партнеры:</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">Школа танцев DanСo</a></li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">БЕЛКАРТ</a></li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">Альф-Банк</a></li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">ООО Конкорд</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5 style="color:#CCF741;">Наши контакты:</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                            <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671"/>
+                            <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791"/>
+                        </svg>
+                        2steps@gmail.com</a>
+                    </li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                        </svg>
+                        +375255834592</a></li>
+                    <li class="mb-1"><a class="link-light text-decoration-none" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                        </svg>
+                        Минск, Ул. Беды 34</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

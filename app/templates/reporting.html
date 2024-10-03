@@ -1,0 +1,142 @@
+{% extends "profile_user.html" %}
+
+{% block title %}
+Данс-отчет: Ваша танцевальная история
+{% endblock %}
+
+{% block content %}
+<h1>🎉 Ваш Данс-отчет! 🎉</h1>
+<p>Добро пожаловать в ваш персонализированный отчет о посещаемости!</p>
+
+<div id="dashboard">
+    <div class="chart-container">
+        <canvas id="attendanceChart"></canvas>
+        <p>Нажмите на график, чтобы увидеть детали!</p>
+    </div>
+
+    <div class="summary">
+        <h2>Краткий обзор:</h2>
+        <p>Вы посетили <span class="highlight">{{ attendance_data.attended }}</span> занятий и пропустили <span class="highlight">{{ attendance_data.missed }}</span>.</p>
+
+        <h3>Ваши достижения:</h3>
+        <ul>
+            {% if student_achievements %}
+                {% for achievement in student_achievements %}
+                    <li><strong>{{ achievement.achievement.name }}</strong> - {{ achievement.achievement.description }}</li>
+                {% endfor %}
+            {% else %}
+                <li>У вас пока нет достижений. Продолжайте ходить на занятия, и достижения не заставят себя ждать!</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="tips">
+        <h2>Советы для улучшения посещаемости:</h2>
+        <ul>
+            <li>Регулярно практикуйте дома!</li>
+            <li>Планируйте свое время так, чтобы не пропускать занятия.</li>
+            <li>Не стесняйтесь задавать вопросы вашим преподавателям!</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    #dashboard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .chart-container {
+        flex: 1 1 40%;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary, .tips {
+        flex: 1 1 30%;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: #f0f8ff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight {
+        color: #ff4500;
+        font-weight: bold;
+    }
+
+    .status {
+        font-weight: bold;
+        color: green;
+    }
+
+    h2 {
+        border-bottom: 2px solid #ff4500;
+        padding-bottom: 5px;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Посещенные', 'Пропущенные'],
+            datasets: [{
+                label: 'Количество занятий',
+                data: [{{ attendance_data.attended }}, {{ attendance_data.missed }}],
+                backgroundColor: ['#4CAF50', '#FF6384'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.raw;
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Количество занятий'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

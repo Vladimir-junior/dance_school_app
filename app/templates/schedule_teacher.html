@@ -1,0 +1,48 @@
+{% extends "profile_teacher.html" %}
+
+{% block title %}
+Мое расписание
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Мое расписание</h2>
+<div class="container mt-4">
+    {% if lessons %}
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Занятия</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Название танца</th>
+                            <th>Дата и время</th>
+                            <th>Место</th>
+                            <th>Студенты</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for lesson in lessons %}
+                            <tr>
+                                <td>{{ lesson.dance_style.name }}</td>
+                                <td>{{ lesson.date_time|date:"D, d M Y H:i" }}</td>
+                                <td>{{ lesson.studio.address }}</td>
+                                <td>
+                                    {% for signup in lesson.lessonsignup_set.all %}
+                                        {{ signup.student.get_full_name }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning mt-3" role="alert">
+            У вас нет записей на занятия.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+version: '3.8'
+
+volumes:
+  db_data:
+    driver: local
+
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_USER: "anya"
+      MYSQL_DATABASE: "anya"
+      MYSQL_PASSWORD: "anya"
+      MYSQL_ROOT_PASSWORD: "anya"
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  app:
+    build: .
+    image: dance_school_app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    command: sleep 10000000
